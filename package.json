@@ -1,30 +1,31 @@
+
 {
-“name”: “nova-proxy”,
-“version”: “4.1.10”,
-“private”: true,
-“type”: “module”,
-“scripts”: {
-“build”: “node scripts/verify-release.mjs”,
-“build:debug”: “node scripts/verify-release.mjs”,
-“check”: “npm run build && node –check worker.js && wrangler deploy –dry-run –outdir .wrangler/dry-run”,
-“test”: “npm run build && node –test”,
-“deploy”: “npm run build && wrangler deploy”
-},
-“cloudflare”: {
-“bindings”: {
-“KV”: {
-“description”: “Nova’s compatibility and migration store. Cloudflare creates and binds it automatically.”
-},
-“DB”: {
-“description”: “Nova’s primary D1 database for settings, users, usage, logs, and authentication.”
-},
-“NOVA_CLAIM_TOKEN”: {
-“description”: “Optional first-time setup claim token.”
-}
-}
-},
-“devDependencies”: {
-“@types/node”: “^26.1.2”,
-“wrangler”: “^4.116.0”
-}
+  "name": "nova-proxy",
+  "version": "4.1.10",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/verify-release.mjs",
+    "build:debug": "node scripts/verify-release.mjs",
+    "check": "npm run build && node --check worker.js && wrangler deploy --dry-run --outdir .wrangler/dry-run",
+    "test": "npm run build && node --test",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "cloudflare": {
+    "bindings": {
+      "KV": {
+        "description": "Nova's compatibility and migration store."
+      },
+      "DB": {
+        "description": "Nova's primary D1 database."
+      },
+      "NOVA_CLAIM_TOKEN": {
+        "description": "Optional first-time setup claim token."
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "wrangler": "^4.116.0"
+  }
 }
